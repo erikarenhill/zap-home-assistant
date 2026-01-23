@@ -564,11 +564,9 @@ class ZapEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     ) -> config_entries.OptionsFlow:
         """Get the options flow handler.
 
-        Args:
-            config_entry: Config entry instance
-
         Returns:
-            Options flow handler
+            Options flow handler instance. The config_entry is automatically
+            provided by the Home Assistant framework.
 
         """
         return ZapEnergyOptionsFlowHandler()
