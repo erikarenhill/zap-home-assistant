@@ -561,7 +561,7 @@ class ZapEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @callback
     def async_get_options_flow(
         config_entry: config_entries.ConfigEntry,
-    ) -> ZapEnergyOptionsFlowHandler:
+    ) -> config_entries.OptionsFlow:
         """Get the options flow handler.
 
         Args:
@@ -571,20 +571,11 @@ class ZapEnergyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             Options flow handler
 
         """
-        return ZapEnergyOptionsFlowHandler(config_entry)
+        return ZapEnergyOptionsFlowHandler()
 
 
 class ZapEnergyOptionsFlowHandler(config_entries.OptionsFlow):  # pylint: disable=too-few-public-methods
     """Handle options flow for Zap Energy integration."""
-
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
-        """Initialize options flow.
-
-        Args:
-            config_entry: Config entry instance
-
-        """
-        self.config_entry = config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
